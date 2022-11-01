@@ -63,7 +63,7 @@ resource "aws_security_group" "node_group_two" {
     protocol  = "tcp"
 
     cidr_blocks = [
-      "10.0.0.0/8",
+      "192.168.0.0/16",
     ]
   }
 
@@ -73,7 +73,7 @@ resource "aws_security_group" "node_group_two" {
     protocol  = "tcp"
 
     cidr_blocks = [
-      "10.0.0.0/8",
+      "192.168.0.0/16",
     ]
   }
 
@@ -83,7 +83,7 @@ resource "aws_security_group" "node_group_two" {
     protocol  = "tcp"
 
     cidr_blocks = [
-      "10.0.0.0/8",
+      "192.168.0.0/16",
     ]
   }
 }
