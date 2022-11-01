@@ -11,6 +11,36 @@ resource "aws_security_group" "node_group_one" {
       "10.0.0.0/8",
     ]
   }
+
+  ingress {
+    from_port = 80
+    to_port   = 80
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/8",
+    ]
+  }
+
+  ingress {
+    from_port = 443
+    to_port   = 443
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/8",
+    ]
+  }
+
+    ingress {
+    from_port = 5432
+    to_port   = 5432
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/8",
+    ]
+  }
 }
 
 resource "aws_security_group" "node_group_two" {
@@ -24,6 +54,36 @@ resource "aws_security_group" "node_group_two" {
 
     cidr_blocks = [
       "192.168.0.0/16",
+    ]
+  }
+
+  ingress {
+    from_port = 80
+    to_port   = 80
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/8",
+    ]
+  }
+
+  ingress {
+    from_port = 443
+    to_port   = 443
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/8",
+    ]
+  }
+
+  ingress {
+    from_port = 5432
+    to_port   = 5432
+    protocol  = "tcp"
+
+    cidr_blocks = [
+      "10.0.0.0/8",
     ]
   }
 }
