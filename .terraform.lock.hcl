@@ -1,28 +1,6 @@
 # This file is maintained automatically by "terraform init".
 # Manual edits may be lost in future updates.
 
-provider "registry.terraform.io/cloudposse/utils" {
-  version     = "1.5.0"
-  constraints = ">= 0.17.0"
-  hashes = [
-    "h1:c44hn6ZPAgtN530kX/Onqa5IYGgSAkfKXSSQqFNAsG4=",
-    "zh:0e5a1f2285d61a9a6b6776ce6a3559a4fad6fae902a5c4c6b615aa58ebfeebf1",
-    "zh:101516f03c8912b140dcc9c21af68976223531ea114bfc2a7198be9b05a13e42",
-    "zh:14f7061569101aac941e7b35bfcab429a1335566bcc2a2a0afbbca42957735a4",
-    "zh:1594acad601c6d3dc6e34e10eb6f2c436274a2b2a7af837da46a5cf666c1647d",
-    "zh:230684403acf64bcccf1f2bdfecfeedadc58891a11d98a23c1130d483cefe15f",
-    "zh:2d259644fbe6028d8cfc9cb16ec16ffe83a58245674937d6f4b05fd1dedb62b3",
-    "zh:4e5eed1a6da16415fdb7ec5bdcc7bacfd26d32916789f63d1382247e806ff0ef",
-    "zh:597cca371b74de9d733cbd91177ab563c4c61f3523f314231f0c6db555672f47",
-    "zh:846c3a901814af6ad99d22438eb7b49d7dcef5ff135acfd62d20e44f14207d99",
-    "zh:857675d244cad21b29a1fb4c0e51eaeef0482626c5ba3256651fc5651f17bcb4",
-    "zh:8c889bc0225e11a33376a7e5c3eebaa3f8a8e52189302f771a73e88ae6824dfb",
-    "zh:9392b3b07cc1f36840dd2d5d9f8f5a043e0c424bf5c103570685878a518ab151",
-    "zh:ec8bc690f949a2c78eb229c3ab506280c5960d3540438e4f0faf6252690b53f5",
-    "zh:ee4e2c402f3499fdfd593f0ebd130e42d8cee7a541f82d634337c99ec4f0d466",
-  ]
-}
-
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "4.37.0"
   constraints = ">= 3.72.0, >= 3.73.0, 4.37.0"
@@ -63,8 +41,7 @@ provider "registry.terraform.io/hashicorp/cloudinit" {
 }
 
 provider "registry.terraform.io/hashicorp/helm" {
-  version     = "2.7.1"
-  constraints = ">= 2.1.0"
+  version = "2.7.1"
   hashes = [
     "h1:L5qLTfZH7PnZt9+YnS7iYmPBEDQOpEjZiF0v50BRNi8=",
     "zh:13e2467092deeff01c4cfa2b54ba4510aa7a9b06c58f22c4215b0f4333858364",
