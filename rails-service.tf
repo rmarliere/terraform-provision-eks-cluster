@@ -7,14 +7,14 @@ resource "kubernetes_service" "railsapp" {
   spec {
     port {
       port        = 3000
-      target_port = "3000"
+      target_port = 3000
     }
 
     selector = {
       app = "railsapp"
     }
 
-    type = "LoadBalancer"
+    type = "ClusterIP"
   }
 }
 
