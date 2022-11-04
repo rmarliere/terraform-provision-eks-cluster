@@ -1,4 +1,5 @@
 resource "kubernetes_service" "railsapp" {
+  depends_on=[module.eks]
   metadata {
     name = "railsapp"
   }
