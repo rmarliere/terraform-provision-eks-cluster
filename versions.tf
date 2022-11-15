@@ -9,8 +9,18 @@ terraform {
       source  = "hashicorp/random"
       version = "3.4.3"
     }
-  }
 
+  helm = {
+      source = "hashicorp/helm"
+      version = "2.7.1"
+    }
+
+  kubernetes = {
+      source = "hashicorp/kubernetes"
+      version = "2.15.0"
+    }
+  }
+  
   required_version = "1.3.3"
 }
 
