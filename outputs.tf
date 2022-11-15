@@ -22,7 +22,3 @@ output "cluster_name" {
   description = "Kubernetes Cluster Name"
   value       = local.cluster_name
 }
-
-output "lb_ip" {
-  value = kubernetes_ingress_v1.rails_ingress.status.0.load_balancer.0.ingress.0.hostname
-}
