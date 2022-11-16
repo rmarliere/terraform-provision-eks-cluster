@@ -15,13 +15,14 @@ provider "kubernetes" {
 # AWS Provider
 
 provider "aws" {
-  region = var.region
+  region = local.region
 }
 
 data "aws_availability_zones" "available" {}
 
 locals {
-  cluster_name = "rmarliere-eks-${random_string.suffix.result}"
+  cluster_name = "${terraform.workspace}-eks-${random_string.suffix.result}"
+  region       = terraform.workspace == "default" ? "us-east-1" : "us-west-2"
 }
 
 
