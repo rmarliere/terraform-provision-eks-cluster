@@ -1,6 +1,6 @@
 module "nginx-controller" {
-  depends_on=[module.eks]
-  source  = "terraform-iaac/nginx-controller/helm"
+  depends_on = [module.eks]
+  source     = "terraform-iaac/nginx-controller/helm"
 
   additional_set = [
     {
@@ -17,7 +17,7 @@ module "nginx-controller" {
 }
 
 resource "kubernetes_ingress_v1" "rails_ingress" {
-  depends_on=[module.nginx-controller]
+  depends_on = [module.nginx-controller]
   metadata {
     name      = "rails-ingress"
     namespace = "default"

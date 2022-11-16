@@ -6,22 +6,22 @@ variable "region" {
 
 variable "cidr1" {
   default = [
-      "10.0.0.0/8",
-    ]
+    "10.0.0.0/8",
+  ]
 }
 
 variable "cidr2" {
   default = [
-      "192.168.0.0/16",
-    ]
+    "192.168.0.0/16",
+  ]
 }
 
-variable protocol_tcp {
+variable "protocol_tcp" {
   default = "tcp"
 }
 
 variable "rules" {
-  default =[
+  default = [
     {
       from_port = 80
       to_port   = 80
