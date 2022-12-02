@@ -1,3 +1,13 @@
+variable "cluster_name" {
+  description = "The name to use for all cluster resources"
+  type        = string
+}
+
+variable "region" {
+  description = "AWS region"
+  type        = string
+}
+
 variable "cidr1" {
   default = [
     "10.0.0.0/8",

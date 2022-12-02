@@ -2,15 +2,15 @@ module "eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "18.30.2"
 
-  cluster_name    = local.cluster_name
+  cluster_name    = var.cluster_name
   cluster_version = "1.22"
 
-  vpc_id     = module.vpc.vpc_id
-  subnet_ids = module.vpc.private_subnets
+  vpc_id     = var.vpc_id
+  subnet_ids = var.private_subnets
 
   #fix for https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2258
   node_security_group_tags = {
-    "kubernetes.io/cluster/${local.cluster_name}" = null
+    "kubernetes.io/cluster/${var.cluster_name}" = null
   }
 
   eks_managed_node_group_defaults = {
@@ -24,7 +24,7 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "${terraform.workspace}-node-group-1"
+      name = "node-group-1"
 
       instance_types = ["t3.small"]
 
@@ -33,12 +33,12 @@ module "eks" {
       desired_size = 2
 
       vpc_security_group_ids = [
-        aws_security_group.node_group_one.id
+        var.aws_sg_node_group_one_id
       ]
     }
 
     two = {
-      name = "${terraform.workspace}-node-group-2"
+      name = "node-group-2"
 
       instance_types = ["t3.medium"]
 
@@ -47,7 +47,7 @@ module "eks" {
       desired_size = 1
 
       vpc_security_group_ids = [
-        aws_security_group.node_group_two.id
+        var.aws_sg_node_group_two_id
       ]
     }
   }

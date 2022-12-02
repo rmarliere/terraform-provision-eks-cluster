@@ -1,45 +1,8 @@
-# Kubernetes provider
-# https://learn.hashicorp.com/terraform/kubernetes/provision-eks-cluster#optional-configure-terraform-kubernetes-provider
-
-provider "kubernetes" {
-  host                   = module.eks.cluster_endpoint
-  cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
-  exec {
-    api_version = "client.authentication.k8s.io/v1beta1"
-    args        = ["eks", "get-token", "--cluster-name", module.eks.cluster_id]
-    command     = "aws"
-  }
-}
-
-
-# AWS Provider
-
-provider "aws" {
-  region = local.region
-}
-
-data "aws_availability_zones" "available" {}
-
 locals {
-  cluster_name = "${terraform.workspace}-eks-${random_string.suffix.result}"
-  region       = terraform.workspace == "default" ? "us-east-1" : "us-west-2"
+  cluster_name = "rmarliere-eks-${random_string.suffix.result}"
+  # region       = terraform.workspace == "default" ? "us-east-1" : "us-west-2"
+  region = "us-east-1"
 }
-
-
-# Helm Provider
-
-provider "helm" {
-  kubernetes {
-    host                   = module.eks.cluster_endpoint
-    cluster_ca_certificate = base64decode(module.eks.cluster_certificate_authority_data)
-    exec {
-      api_version = "client.authentication.k8s.io/v1beta1"
-      args        = ["eks", "get-token", "--cluster-name", module.eks.cluster_id]
-      command     = "aws"
-    }
-  }
-}
-
 
 # Random Provider
 
@@ -48,4 +11,25 @@ resource "random_string" "suffix" {
   special = false
 }
 
+module "vpc" {
+  source       = "./modules/services/vpc"
+  cluster_name = local.cluster_name
+  region       = local.region
+}
+
+module "eks" {
+  source                   = "./modules/services/eks"
+  cluster_name             = local.cluster_name
+  aws_sg_node_group_one_id = module.vpc.aws_sg_node_group_one_id
+  aws_sg_node_group_two_id = module.vpc.aws_sg_node_group_two_id
+  vpc_id                   = module.vpc.vpc_id
+  private_subnets          = module.vpc.private_subnets
+}
+
+module "webserver-cluster" {
+  source                             = "./modules/services/webserver-cluster"
+  cluster_endpoint                   = module.eks.cluster_endpoint
+  cluster_id                         = module.eks.cluster_id
+  cluster_certificate_authority_data = module.eks.certificate
+}
 

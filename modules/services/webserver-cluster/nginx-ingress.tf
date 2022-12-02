@@ -1,6 +1,6 @@
 module "nginx-controller" {
-  depends_on = [module.eks]
-  source     = "terraform-iaac/nginx-controller/helm"
+  # depends_on = [module.eks]
+  source = "terraform-iaac/nginx-controller/helm"
 
   additional_set = [
     {
