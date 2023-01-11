@@ -1,6 +1,6 @@
-resource "aws_ecr_repository" "railsapp" {
+resource "aws_ecr_repository" "springpetclinic" {
   depends_on           = [module.eks]
-  name                 = "railsapp"
+  name                 = "springpetclinic"
   image_tag_mutability = "MUTABLE"
   force_delete         = true
 

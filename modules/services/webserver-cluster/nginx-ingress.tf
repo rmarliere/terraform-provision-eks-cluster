@@ -38,10 +38,10 @@ resource "kubernetes_ingress_v1" "rails_ingress" {
 
           backend {
             service {
-              name = "railsapp"
+              name = "springpet"
 
               port {
-                number = 3000
+                number = 8080
               }
             }
           }
