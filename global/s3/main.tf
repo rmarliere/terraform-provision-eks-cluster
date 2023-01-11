@@ -1,24 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.37.0"
-    }
-
-    random = {
-      source  = "hashicorp/random"
-      version = "3.4.3"
-    }
-  }
-
-  required_version = "1.3.5"
-}
-
-resource "random_string" "suffix" {
-  length  = 8
-  special = false
-}
-
 provider "aws" {
     region = "us-east-1"
 }
